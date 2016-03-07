@@ -70,7 +70,7 @@ namespace EncryptionForm {
                         break;
                     case 2:
                         int key1 = Convert.ToInt32(textBox3.Text);
-                      //  textBox2.Text = DeEncryption.Encription_one(str, key1);
+                        textBox2.Text = DeEncryption.Encription_one(str, key1);
                         break;
                 }
             }

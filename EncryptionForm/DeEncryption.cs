@@ -36,6 +36,7 @@ namespace EncryptionForm {
                 return ch;
             }
         }
+
     public static string Vig(string str, string code) {
         List<List<char>> vg = new List<List<char>>(Encryption.CreateTableVig());
         string tr = "";
@@ -63,6 +64,35 @@ namespace EncryptionForm {
         return result;
     }
 
+ 
+    
+    static public string Encription_one(string str, int key) {
+        string st = Cezar(str,key);
+        string res = "";
+        Dictionary<char, int> ds = new Dictionary<char, int>(Encryption.Dkt(st));
+        List<char> alf = new List<char>(Encryption.CreateA());
+        foreach (char ch in st) {
+                switch (ch) {
+                    case ' ':
+                        res += ch;
+                        break;
+                    default:
+                        if (ds[ch] == 0) {
+                            res += ch;
+                            ds[ch]++;
+                        }
+                        else {
+                            int count=ds[ch];
+                            res += alf[alf.IndexOf(ch)-count];
+                            ds[ch]++;
+                        }
+                        break;
+                }
+            }
+        
+        return res;
+
+    }
 
 
 

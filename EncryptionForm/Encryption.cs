@@ -118,7 +118,7 @@ namespace EncryptionForm {
 
         /*                Монофоническое шифрование                                      */
         // Таблица частот
-        static Dictionary<char, int> Dkt(string str) {
+      public  static Dictionary<char, int> Dkt(string str) {
             string newstr = "";
             foreach (char letter in str.Distinct()) {
                 newstr += letter;
