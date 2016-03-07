@@ -15,7 +15,7 @@ namespace EncryptionForm {
 
         private void btnIn_Click(object sender, EventArgs e) {
             string str = textBox1.Text.Trim();
-            if (string.IsNullOrEmpty(textBox3.Text)) {
+            if (string.IsNullOrEmpty(textBox3.Text) && (comboBox1.SelectedIndex != 3)) {
                 MessageBox.Show("Введите ключ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
@@ -36,6 +36,9 @@ namespace EncryptionForm {
                         int key1 = Convert.ToInt32(textBox3.Text);
                         textBox2.Text = Encryption.Encription_one(str,key1);
                         break;
+                case 3:
+                    textBox2.Text = Encryption.Crypt(str);
+                    break;
                 }
             }
         }

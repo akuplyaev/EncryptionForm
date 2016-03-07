@@ -98,7 +98,8 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Простая одноалфавитная подстановка",
             "Многоалфавитной  одноконтурная  подстановка",
-            "Монофоническое шифрование"});
+            "Монофоническое шифрование",
+            "Простая перестановка"});
             this.comboBox1.Location = new System.Drawing.Point(24, 30);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(211, 21);

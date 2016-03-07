@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EncryptionForm {
     static class Encryption {
-    public static List<char> CreateA() {
+        public static List<char> CreateA() {
             List<char> alf = new List<char>();
             for (int i = 65; i <= 90; i++) {
 
@@ -30,26 +31,26 @@ namespace EncryptionForm {
         static char Cezar(char ch, int key, List<char> alf) {
             int Size = alf.Count;
             int index = alf.IndexOf(ch);
-            int max = index + key;           
-                if (ch == ' ')
-                    return ch;
-               else if (max >= Size) {                
-                    while (max>=Size) {
-                        max = max - Size;                                            
-                    }
-                    ch = alf[max];  
-                    return ch;
+            int max = index + key;
+            if (ch == ' ')
+                return ch;
+            else if (max >= Size) {
+                while (max >= Size) {
+                    max = max - Size;
                 }
+                ch = alf[max];
+                return ch;
+            }
 
-                else {
-                    ch = alf[max];
-                    return ch;
-                }                                        
+            else {
+                ch = alf[max];
+                return ch;
+            }
         }
         //  шифрование строки,пробелы не шифруются
-        public static string Cezar(string str,int key) {
+        public static string Cezar(string str, int key) {
             string res = "";
-            List<char> alf = new List<char>(CreateA());           
+            List<char> alf = new List<char>(CreateA());
             for (int i = 0; i < str.Length; i++) {
                 char ch = (char)str[i];
                 ch = Cezar(ch, key, alf);
@@ -61,7 +62,7 @@ namespace EncryptionForm {
 
         /* Шифрование методом многоалфавитной  одноконтурной обыкновенной подстановки с использование таблицы Виженера*/
         //Функция смещения алфавита для создания таблицы
-      public  static List<char> CreateRowVig(List<char> alf) {
+        public static List<char> CreateRowVig(List<char> alf) {
             List<char> sf = new List<char>();
             int key = 1;
             int count = alf.Count;
@@ -78,7 +79,7 @@ namespace EncryptionForm {
         }
 
         // Создание таблицы Виженера  для алфавита [A-Z]
-      public  static List<List<char>> CreateTableVig() {
+        public static List<List<char>> CreateTableVig() {
             List<List<char>> vg = new List<List<char>>();
             List<char> alf = new List<char>(CreateA());
             vg.Add(alf);
@@ -91,8 +92,8 @@ namespace EncryptionForm {
         }
 
         //Шифрование строки с ключевым словом LEMON, пробелы не шифруются
-        public static string Vig(string str,string code) {
-            List<List<char>> vg = new List<List<char>>(CreateTableVig());           
+        public static string Vig(string str, string code) {
+            List<List<char>> vg = new List<List<char>>(CreateTableVig());
             string tr = "";
             string result = "";
             while (str.Length > tr.Length) {
@@ -118,7 +119,7 @@ namespace EncryptionForm {
 
         /*                Монофоническое шифрование                                      */
         // Таблица частот
-      public  static Dictionary<char, int> Dkt(string str) {
+        public static Dictionary<char, int> Dkt(string str) {
             string newstr = "";
             foreach (char letter in str.Distinct()) {
                 newstr += letter;
@@ -150,8 +151,8 @@ namespace EncryptionForm {
             }
         }
         //Шифрование строки пробелов
-        static public string Encription_one(string str,int key) {
-            string res = "";           
+        static public string Encription_one(string str, int key) {
+            string res = "";
             Dictionary<char, int> ds = new Dictionary<char, int>(Dkt(str));
             List<char> alf = new List<char>(CreateA());
             foreach (char ch in str) {
@@ -174,7 +175,41 @@ namespace EncryptionForm {
             return res;
 
         }
+        /*Шифрование методом простой перестановки */
+        //функция перемешивания массива
+        public static int[] RandomShuffle(int[] array) {
+            Random random = new Random();
+            int[] shuffle = new int[array.Length];
+            array.CopyTo(shuffle,0);
+            for (int i = 2; i < array.Length; ++i) {
+                int temp = shuffle[i];
+                int nextRandom = random.Next(i - 1);
+                shuffle[i] = shuffle[nextRandom];
+                shuffle[nextRandom] = temp;
+            }
+            return shuffle;
+        }
+        //Функция шифрования 
+        public static string Crypt(string str) {
+            int Size = str.Length;
+            string st = "";
+            int[] arr = new int[Size];
+            for (int i = 0; i < Size; i++) {
+                arr[i] = i;
+            }
+            int[] shuffle = RandomShuffle(arr);
+            char[] res=new  char[Size];
+            for (int i = 0; i < Size; i++) {
+                st+=str[shuffle[i]];                
+            }           
+                return st;
+        }
+
+
+       
     }
+
+
 }
 
 

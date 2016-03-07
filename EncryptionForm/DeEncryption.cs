@@ -65,14 +65,12 @@ namespace EncryptionForm {
     }
 
  
-    
+    //передать таблицу частот ,без нее не расшифровать
     static public string Encription_one(string str, int key) {
         string st = Cezar(str,key);
         string res = "";
         Dictionary<char, int> ds = new Dictionary<char, int>(Encryption.Dkt(st));
-        List<char> alf = new List<char>(Encryption.CreateA());
-        
-        
+        List<char> alf = new List<char>(Encryption.CreateA());             
         return res;
 
     }
