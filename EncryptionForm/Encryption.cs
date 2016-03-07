@@ -61,7 +61,7 @@ namespace EncryptionForm {
 
         /* Шифрование методом многоалфавитной  одноконтурной обыкновенной подстановки с использование таблицы Виженера*/
         //Функция смещения алфавита для создания таблицы
-        static List<char> CreateRowVig(List<char> alf) {
+      public  static List<char> CreateRowVig(List<char> alf) {
             List<char> sf = new List<char>();
             int key = 1;
             int count = alf.Count;
@@ -78,7 +78,7 @@ namespace EncryptionForm {
         }
 
         // Создание таблицы Виженера  для алфавита [A-Z]
-        static List<List<char>> CreateTableVig() {
+      public  static List<List<char>> CreateTableVig() {
             List<List<char>> vg = new List<List<char>>();
             List<char> alf = new List<char>(CreateA());
             vg.Add(alf);

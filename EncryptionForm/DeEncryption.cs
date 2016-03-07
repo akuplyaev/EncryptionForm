@@ -16,7 +16,7 @@ namespace EncryptionForm {
             }
             return res;           
         }
-        static char Cezar(char ch, int key, List<char> alf) {
+    static char Cezar(char ch, int key, List<char> alf) {
             int Size = alf.Count;
             int index = alf.IndexOf(ch);
             int res = index - key;
@@ -36,6 +36,32 @@ namespace EncryptionForm {
                 return ch;
             }
         }
+    public static string Vig(string str, string code) {
+        List<List<char>> vg = new List<List<char>>(Encryption.CreateTableVig());
+        string tr = "";
+        string result = "";
+        while (str.Length > tr.Length) {
+
+            tr += code;
+        }
+        while (tr.Length > str.Length) {
+            tr = tr.Remove(str.Length, tr.Length - str.Length);
+        }
+        int index = 0;
+        foreach (char ls in str) {  
+            if (ls != ' ') {               
+              int f= vg[vg[0].IndexOf(tr[index])].IndexOf(ls);
+                result+=vg[0][f];
+
+            }
+            else {
+                result += ls;
+            }
+            index++;
+        }
+
+        return result;
+    }
 
 
 

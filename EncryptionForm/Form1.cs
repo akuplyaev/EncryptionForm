@@ -66,11 +66,11 @@ namespace EncryptionForm {
                         break;
                     case 1:
                         string code = textBox3.Text.Trim();
-                        textBox2.Text = Encryption.Vig(str, code);
+                        textBox2.Text =DeEncryption.Vig(str, code);
                         break;
                     case 2:
                         int key1 = Convert.ToInt32(textBox3.Text);
-                        textBox2.Text = Encryption.Encription_one(str, key1);
+                      //  textBox2.Text = DeEncryption.Encription_one(str, key1);
                         break;
                 }
             }
