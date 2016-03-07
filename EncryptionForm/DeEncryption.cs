@@ -71,24 +71,7 @@ namespace EncryptionForm {
         string res = "";
         Dictionary<char, int> ds = new Dictionary<char, int>(Encryption.Dkt(st));
         List<char> alf = new List<char>(Encryption.CreateA());
-        foreach (char ch in st) {
-                switch (ch) {
-                    case ' ':
-                        res += ch;
-                        break;
-                    default:
-                        if (ds[ch] == 0) {
-                            res += ch;
-                            ds[ch]++;
-                        }
-                        else {
-                            int count=ds[ch];
-                            res += alf[alf.IndexOf(ch)-count];
-                            ds[ch]++;
-                        }
-                        break;
-                }
-            }
+        
         
         return res;
 

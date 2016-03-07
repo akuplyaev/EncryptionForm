@@ -7,16 +7,23 @@ namespace EncryptionForm {
         public Form1() {
             InitializeComponent();
         }
-        //key<34;
+        
 
         private void Form1_Load(object sender, EventArgs e) {
             comboBox1.SelectedIndex = 0;
         }
 
         private void btnIn_Click(object sender, EventArgs e) {
-            string str = textBox1.Text.Trim();                        
-            {
-                switch (comboBox1.SelectedIndex) {
+            string str = textBox1.Text.Trim();
+            if (string.IsNullOrEmpty(textBox3.Text)) {
+                MessageBox.Show("Введите ключ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            else if (string.IsNullOrEmpty(textBox1.Text)) {
+                MessageBox.Show("Введите сообщение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {    
+            switch (comboBox1.SelectedIndex) {
                     case 0:
                         int key = Convert.ToInt32(textBox3.Text);
                         textBox2.Text = Encryption.Cezar(str, key);
@@ -31,7 +38,6 @@ namespace EncryptionForm {
                         break;
                 }
             }
-
         }
         // В зависимости от выбранного combox устанавливаются правила ввода 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
@@ -70,9 +76,19 @@ namespace EncryptionForm {
                         break;
                     case 2:
                         int key1 = Convert.ToInt32(textBox3.Text);
-                        textBox2.Text = DeEncryption.Encription_one(str, key1);
+                      //  textBox2.Text = DeEncryption.Encription_one(str, key1);
                         break;
                 }
+            }
+        }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e) {
+            switch (comboBox1.SelectedIndex){
+                case 2: btnOut.Visible = false;
+                    break;
+                default :
+                    btnOut.Visible = true;
+                    break;
             }
         }
 
