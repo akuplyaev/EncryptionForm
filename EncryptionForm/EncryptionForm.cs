@@ -3,8 +3,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace EncryptionForm {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class EncryptionForm : Form {
+        public EncryptionForm() {
             InitializeComponent();
         }
         
@@ -36,9 +36,9 @@ namespace EncryptionForm {
                         int key1 = Convert.ToInt32(textBox3.Text);
                         textBox2.Text = Encryption.Encription_one(str,key1);
                         break;
-                case 3:
-                    textBox2.Text = Encryption.Crypt(str);
-                    break;
+                    case 3:
+                        textBox2.Text = Encryption.Crypt(str);
+                        break;
                 }
             }
         }
@@ -77,8 +77,7 @@ namespace EncryptionForm {
                         string code = textBox3.Text.Trim();
                         textBox2.Text =DeEncryption.Vig(str, code);
                         break;
-                    case 2:
-                        int key1 = Convert.ToInt32(textBox3.Text);
+                    case 2:                       
                       //  textBox2.Text = DeEncryption.Encription_one(str, key1);
                         break;
                 }
@@ -87,7 +86,11 @@ namespace EncryptionForm {
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e) {
             switch (comboBox1.SelectedIndex){
-                case 2: btnOut.Visible = false;
+                case 2:
+                    btnOut.Visible = false;
+                    break;
+                case 3:
+                    btnOut.Visible = false;
                     break;
                 default :
                     btnOut.Visible = true;

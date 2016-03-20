@@ -65,7 +65,7 @@ namespace EncryptionForm {
     }
 
  
-    //передать таблицу частот ,без нее не расшифровать
+    //передать таблицу частот для расшифровки
     static public string Encription_one(string str, int key) {
         string st = Cezar(str,key);
         string res = "";

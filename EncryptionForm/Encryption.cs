@@ -56,7 +56,6 @@ namespace EncryptionForm {
                 ch = Cezar(ch, key, alf);
                 res += ch;
             }
-
             return res;
         }
 
@@ -180,7 +179,7 @@ namespace EncryptionForm {
         public static int[] RandomShuffle(int[] array) {
             Random random = new Random();
             int[] shuffle = new int[array.Length];
-            array.CopyTo(shuffle,0);
+            array.CopyTo(shuffle, 0);
             for (int i = 2; i < array.Length; ++i) {
                 int temp = shuffle[i];
                 int nextRandom = random.Next(i - 1);
@@ -197,18 +196,23 @@ namespace EncryptionForm {
             for (int i = 0; i < Size; i++) {
                 arr[i] = i;
             }
-            int[] shuffle = RandomShuffle(arr);
-            char[] res=new  char[Size];
+            int[] shuffle = RandomShuffle(arr);// ключ шифрования
+            char[] res = new char[Size];
             for (int i = 0; i < Size; i++) {
-                st+=str[shuffle[i]];                
-            }           
-                return st;
+                st += str[shuffle[i]];
+            }
+            return st;
         }
-
-
-       
+        //Шифрование по маршрутам
+        public static string Gammilt(string str) {
+            
+            
+            
+            
+            
+            return str;
+        }
     }
-
 
 }
 
